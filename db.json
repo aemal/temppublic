@@ -1,0 +1,12 @@
+{
+  "cards": [
+    {
+      "id": 1,
+      "player": {
+        "firstname": "John",
+        "lastname": "Doe",
+        "birthday": "1993-07-22T08:38:50.090Z"
+      }
+    }
+  ]
+}

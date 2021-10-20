@@ -24,11 +24,11 @@ export const CreateCard = () => {
         }}>
             <div className='input-container'>
                 <label htmlFor='firstname'>First name</label>
-                <input type='text' id='firstname' value={player.firstname} onChange={e => setPlayer((prevState) => ({ ...prevState, firstname: e.target.value }))} />
+                <input required minLength={2} type='text' id='firstname' placeholder='John' value={player.firstname} onChange={e => setPlayer((prevState) => ({ ...prevState, firstname: e.target.value }))} />
             </div>
             <div className='input-container'>
                 <label htmlFor='lastname'>Last name</label>
-                <input type='text' id='lastname' value={player.lastname} onChange={e => setPlayer((prevState) => ({ ...prevState, lastname: e.target.value }))} />
+                <input required minLength={2} type='text' id='lastname' placeholder='Doe' value={player.lastname} onChange={e => setPlayer((prevState) => ({ ...prevState, lastname: e.target.value }))} />
             </div>
             <div className='input-container'>
                 <label>Date</label>

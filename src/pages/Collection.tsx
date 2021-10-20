@@ -1,4 +1,5 @@
 import React from 'react';
+import RenderCard from '../components/render-card/RenderCard';
 
 import { fetchCollection } from '../lib/collection';
 
@@ -11,5 +12,5 @@ export const Collection = () => {
   /**
    * Step 1: Render the card
    */
-  return <div />;
+  return <RenderCard card={card} />;
 };

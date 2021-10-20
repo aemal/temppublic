@@ -31,5 +31,31 @@ export const Collection = () => {
     return <h3>Empty collection</h3>;
   }
 
-  return <RenderCard card={collection[0]} />;
+  return (
+    <div>
+      <div className='in-row align-center mb2'>
+        <span>Order by</span>
+        <div className="sort-button-collection">
+          <button
+            onClick={() => setCollection((cards) => [...cards.sort((a, b) => new Date(b.player.birthday).valueOf() - new Date(a.player.birthday).valueOf())])}
+          >
+            Date of birth
+        </button>
+          <button
+            onClick={() => setCollection((cards) => [...cards.sort((a, b) => a.player.firstname.localeCompare(b.player.firstname))])}
+          >
+            First name
+          </button>
+          <button
+            onClick={() => setCollection((cards) => [...cards.sort((a, b) => a.player.lastname.localeCompare(b.player.lastname))])}
+          >
+            Last name
+          </button>
+        </div>
+      </div>
+      <div className='collection'>
+        {collection.map((card, index) => <RenderCard key={index} card={card} />)}
+      </div>
+    </div>
+  );
 };

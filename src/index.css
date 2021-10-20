@@ -9,6 +9,7 @@
 
 body {
     padding: 20px;
+    color: #1d1d32;
 }
 
 textarea:focus, input:focus {
@@ -364,12 +365,6 @@ ul {
     text-align: start;
 }
 
-.input-container {
-    padding: 8px 0px;
-    display: flex;
-    flex-direction: row;
-}
-
-.input-container input {
-    margin-left: 8px;
+.underline {
+    text-decoration: underline;
 }

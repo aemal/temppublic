@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import RenderCard from '../components/render-card/RenderCard';
 
 import { fetchCollection, ICard } from '../lib/collection';
 
 import './Collection.css';
+import pen from '../assets/pen.svg';
 
 export const Collection = () => {
   const [collection, setCollection] = useState<null | ICard[]>(null);
@@ -33,8 +35,8 @@ export const Collection = () => {
 
   return (
     <div>
-      <div className='in-row align-center mb2'>
-        <span>Order by</span>
+      <div className='in-column align-center mb6 mt2 width100 justify-center'>
+        <h4 className='mb1'>Order by</h4>
         <div className="sort-button-collection">
           <button
             onClick={() => setCollection((cards) => [...cards.sort((a, b) => new Date(b.player.birthday).valueOf() - new Date(a.player.birthday).valueOf())])}
@@ -56,6 +58,9 @@ export const Collection = () => {
       <div className='collection'>
         {collection.map((card, index) => <RenderCard key={index} card={card} />)}
       </div>
+      <Link to='/create-card' className='create-card-link'>
+        <img src={pen} alt="pen" />
+      </Link>
     </div>
   );
 };

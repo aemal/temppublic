@@ -1,3 +1,8 @@
+import { API_URL } from "../constants";
+import axios from 'axios';
+
+axios.defaults.baseURL = API_URL;
+
 export interface IPlayer {
   firstname: string;
   lastname: string;
@@ -10,9 +15,10 @@ export interface ICard {
 }
 
 export async function fetchCollection() {
-  const res = await fetch('http://localhost:8001/cards', {
-    method: 'get',
-  });
+  const res = await axios.get(`/cards`);
+  return res.data;
+}
 
-  return await res.json() as ICard[];
+export async function postPlayer(player: IPlayer) {
+  return await axios.post(`/cards`, { player });
 }

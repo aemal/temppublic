@@ -12,16 +12,24 @@ export const CreateCard = () => {
         lastname: '',
         birthday: new Date(),
     });
+    const [error, setError] = useState<null | string>(null);
 
     return (
-        <form onSubmit={e => {
+        <form onSubmit={async (e) => {
             e.preventDefault();
+            setError(null);
 
-            postPlayer({
-                ...player,
-                birthday: player.birthday.toISOString()
-            });
+            try {
+                return await postPlayer({
+                    ...player,
+                    birthday: player.birthday.toISOString()
+                });
+            } catch (error) {
+                console.error(error);
+                setError(error.message);
+            }
         }}>
+            {error && <h3 className='mb2'>{error}</h3>}
             <div className='input-container'>
                 <label htmlFor='firstname'>First name</label>
                 <input required minLength={2} type='text' id='firstname' placeholder='John' value={player.firstname} onChange={e => setPlayer((prevState) => ({ ...prevState, firstname: e.target.value }))} />

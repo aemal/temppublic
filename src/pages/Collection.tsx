@@ -7,12 +7,21 @@ import './Collection.css';
 
 export const Collection = () => {
   const [collection, setCollection] = useState<null | ICard[]>(null);
+  const [error, setError] = useState<null | string>(null);
 
   useEffect(() => {
     fetchCollection()
       .then(setCollection)
-      .catch(console.error);
+      .catch(error => {
+        console.error(error);
+
+        setError(error.message);
+      });
   }, []);
+
+  if (error) {
+    return <h3>{error}</h3>;
+  }
 
   if (!collection) {
     return <h3>Loading...</h3>;
